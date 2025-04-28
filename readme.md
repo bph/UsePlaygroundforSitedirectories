@@ -30,5 +30,40 @@ sequenceDiagram
 
 ## Usage
 
-- Start the server: `node server.js`
-- Open `index.html` in your browser for manual testing, or call `/screenshot` for automated screenshots.
+1. **Start the server:**
+   ```bash
+   node server.js
+   ```
+
+2. **Open the Playground manually (for testing or debugging):**
+   - Visit [http://localhost:3000/index.html](http://localhost:3000/index.html) in your browser.
+   - *(If you changed the port or host, adjust the URL accordingly.)*
+
+3. **Take an automated screenshot:**
+   - Visit [http://localhost:3000/screenshot](http://localhost:3000/screenshot) in your browser, or use a tool like `curl`:
+     ```bash
+     curl http://localhost:3000/screenshot --output screenshot.png
+     ```
+   - The server will load the Playground, wait for it to finish, and return a screenshot.
+
+4. **Debug mode (see the browser window):**
+   - Visit [http://localhost:3000/screenshot?debug=true](http://localhost:3000/screenshot?debug=true)
+
+> **Note:**  
+> If you run the server on a different port or host, replace `localhost:3000` with your actual address.
+
+---
+
+## Features
+
+- Automated, reliable screenshots of WordPress Playground
+- Manual and automated usage
+- Debug mode for troubleshooting
+- Screenshots saved to `/screenshots` directory
+
+---
+
+## License
+
+   This project is licensed under the GNU General Public License v3.0 (GPL-3.0).
+   See the [LICENSE](LICENSE) file for details.

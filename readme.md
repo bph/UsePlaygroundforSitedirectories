@@ -1,6 +1,45 @@
+
+
 # WordPress Playground Screenshot Automation
 
 This project allows you to automate screenshots of a WordPress Playground instance using Node.js, Express, and Playwright.
+
+## Features
+
+- Automated, reliable screenshots of WordPress Playground
+- Manual and automated usage
+- Debug mode for troubleshooting
+- Screenshots saved to `/screenshots` directory
+
+## Getting Started
+
+1. **Fork and clone this repository:**
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Install Playwright browsers (if needed):**
+   ```bash
+   npx playwright install
+   ```
+
+4. **Start the server:**
+   ```bash
+   node server.js
+   ```
+
+5. **Open the Playground or take a screenshot:**
+   - [http://localhost:3000/index.html](http://localhost:3000/index.html) — manual testing
+   - [http://localhost:3000/screenshot](http://localhost:3000/screenshot) — automated screenshot
+
+> **Note:**  
+> If you use a different port or host, adjust the URLs accordingly.
 
 ## Architecture Diagram
 
@@ -30,6 +69,10 @@ sequenceDiagram
 
 ## Usage
 
+1. Install things
+    ```bash
+   npm install
+   ```
 1. **Start the server:**
    ```bash
    node server.js
@@ -54,12 +97,6 @@ sequenceDiagram
 
 ---
 
-## Features
-
-- Automated, reliable screenshots of WordPress Playground
-- Manual and automated usage
-- Debug mode for troubleshooting
-- Screenshots saved to `/screenshots` directory
 
 ---
 

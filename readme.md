@@ -69,9 +69,9 @@ sequenceDiagram
     User->>User: Click "Take Screenshot" button (triggers /screenshot)
 ```
 ---
-Caveat: This is only a proof of concept for educational purposes, mostly mine. The code was created together with Cursor AI. 
+Caveat: This is only a proof of concept for educational purposes, mostly mine. The code was created together with Cursor AI. Please check for security and bugs before using any of this in production. 
 
-Could could modify it to use with a dynamic playground blueprint for instance of you want to create a set of screenshot for a webdirectory. Or a list of demo sites for our products categories. Or for visual regression testing. 
+You could modify it to use with a dynamic playground blueprint for instance if you want to create a set of screenshot for a webdirectory. Or a list of demo sites for our products categories. Or for visual regression testing. 
 
 The blueprint is hardcoded in the index.html to show a screenshot of the theme demo of Twenty-Twenty-Five. Consult the [WordPress Playground Blueprint API](https://wordpress.github.io/wordpress-playground/blueprints) documentation to modify things to your needs. 
 

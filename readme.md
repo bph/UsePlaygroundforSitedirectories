@@ -33,10 +33,12 @@ This project allows you to automate screenshots of a WordPress Playground instan
    ```bash
    node server.js
    ```
+How to use it: 
 
-5. **Open the Playground or take a screenshot:**
-   - [http://localhost:3000/index.html](http://localhost:3000/index.html) — manual testing
-   - [http://localhost:3000/screenshot](http://localhost:3000/screenshot) — automated screenshot
+1. Open the Playground manually (for testing or debugging): http://localhost:3000/index.html in your browser.
+2. Take an automated screenshot: Visit http://localhost:3000/screenshot in your browser, or use a tool like curl: curl http://localhost:3000/screenshot --output screenshot.png
+The server will load the Playground, wait for it to finish, and return a screenshot.
+3. Debug mode (see the browser window): Visit http://localhost:3000/screenshot?debug=true
 
 > **Note:**  
 > If you use a different port or host, adjust the URLs accordingly.
@@ -66,39 +68,12 @@ sequenceDiagram
     User->>Server: (Optional) Open /index.html for manual testing
     User->>User: Click "Take Screenshot" button (triggers /screenshot)
 ```
-
-## Usage
-
-1. Install things
-    ```bash
-   npm install
-   ```
-1. **Start the server:**
-   ```bash
-   node server.js
-   ```
-
-2. **Open the Playground manually (for testing or debugging):**
-   - Visit [http://localhost:3000/index.html](http://localhost:3000/index.html) in your browser.
-   - *(If you changed the port or host, adjust the URL accordingly.)*
-
-3. **Take an automated screenshot:**
-   - Visit [http://localhost:3000/screenshot](http://localhost:3000/screenshot) in your browser, or use a tool like `curl`:
-     ```bash
-     curl http://localhost:3000/screenshot --output screenshot.png
-     ```
-   - The server will load the Playground, wait for it to finish, and return a screenshot.
-
-4. **Debug mode (see the browser window):**
-   - Visit [http://localhost:3000/screenshot?debug=true](http://localhost:3000/screenshot?debug=true)
-
-> **Note:**  
-> If you run the server on a different port or host, replace `localhost:3000` with your actual address.
-
 ---
+Caveat: This is only a proof of concept for educational purposes, mostly mine. The code was created together with Cursor AI. 
 
+Could could modify it to use with a dynamic playground blueprint for instance of you want to create a set of screenshot for a webdirectory. Or a list of demo sites for our products categories. Or for visual regression testing. 
 
----
+The blueprint is hardcoded in the index.html to show a screenshot of the theme demo of Twenty-Twenty-Five. Consult the [WordPress Playground Blueprint API](https://wordpress.github.io/wordpress-playground/blueprints) documentation to modify things to your needs. 
 
 ## License
 

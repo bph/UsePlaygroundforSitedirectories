@@ -1,0 +1,92 @@
+<iframe id="wp-playground" style="width: 1200px; height: 800px"></iframe>
+<div id="status" style="margin: 20px; font-family: Arial, sans-serif;"></div>
+
+<script type="module">
+    import { startPlaygroundWeb } from 'https://playground.wordpress.net/client/index.js';
+ 
+    const statusDiv = document.getElementById('status');
+    statusDiv.textContent = 'Starting WordPress Playground...';
+    console.log('Starting WordPress Playground...');
+    
+    const client = await startPlaygroundWeb({
+        iframe: document.getElementById('wp-playground'),
+        remoteUrl: `https://playground.wordpress.net/remote.html`,
+        blueprint: {
+            "siteOptions": {
+                "permalink_structure": "/%postname%/",
+            },
+            "steps": [
+                {
+                    "step": "resetData"
+                },
+                {
+                    "step": "updateUserMeta",
+                        "meta": {
+                            "admin_color": "modern"
+                        },
+                        "userId": 1
+                },
+                {
+			     "step": "importWxr",
+			        "file": {
+				        "resource": "url",
+				        "url": "https://raw.githubusercontent.com/wordpress/blueprints/trunk/blueprints/tt5-demo/tt5-demo-content.xml"
+			        }
+		        },
+		        {
+			        "step": "setSiteOptions",
+			        "options": {
+				"blogname": "Twenty-Twenty-Five",
+                        "blogdescription": "A preview of the next WordPress default theme"
+                    }
+                }
+            ]
+        },
+    });
+
+    statusDiv.textContent = 'Playground started, waiting for content to load (30 seconds)...';
+    console.log('Playground started, waiting for content to load...');
+    // Wait for the site to load
+    await new Promise(resolve => setTimeout(resolve, 30000));
+
+    statusDiv.textContent = 'Taking screenshot...';
+    console.log('Taking screenshot...');
+    
+    try {
+        // Get the current page URL
+        const currentUrl = window.location.href;
+        
+        // Call our server endpoint to take the screenshot
+        const response = await fetch(`http://localhost:3000/screenshot?url=${encodeURIComponent(currentUrl)}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const blob = await response.blob();
+        const screenshot = URL.createObjectURL(blob);
+        
+        // Create a download link for the screenshot
+        const link = document.createElement('a');
+        link.href = screenshot;
+        link.download = 'wordpress-playground-screenshot.png';
+        link.textContent = 'Download Screenshot';
+        link.style.cssText = `
+            display: block;
+            padding: 10px 20px;
+            background-color: #0073aa;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            text-align: center;
+            max-width: 200px;
+        `;
+        document.body.appendChild(link);
+        statusDiv.textContent = 'Screenshot ready! Click the button below to download.';
+    } catch (error) {
+        console.error('Error taking screenshot:', error);
+        statusDiv.textContent = 'Error taking screenshot. Check console for details.';
+    }
+</script>

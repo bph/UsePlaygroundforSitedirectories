@@ -15,7 +15,7 @@ This project allows you to automate screenshots of a WordPress Playground instan
 
 1. **Fork and clone this repository:**
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/bph/your-repo.git
    cd your-repo
    ```
 
